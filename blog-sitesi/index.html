@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Üniversite grup projesi blog sitesi — araştırma, kültür, teknoloji ve eğitim üzerine yazılar." />
+  <title>Akademi Blog</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:ital,wght@0,600;0,700;1,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Ana Stil Dosyası -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<!--
+  data-page="index" → main.js bu bilgiyle hangi
+  JavaScript kodunu çalıştıracağına karar verir.
+-->
+<body data-page="index">
+
+  <!-- ═══════════════════════════════════════════
+       HEADER — Site başlığı ve navigasyon menüsü
+  ════════════════════════════════════════════ -->
+  <header class="site-header">
+    <div class="container header-inner">
+
+      <!-- Site logosu / adı -->
+      <a href="index.html" class="site-logo">Akademi Blog</a>
+
+      <!-- Hamburger butonu (sadece mobilde görünür) -->
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Menüyü aç/kapat"
+        aria-expanded="false"
+        aria-controls="navLinks"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <!-- Navigasyon linkleri -->
+      <nav id="navLinks" class="nav-links" role="navigation" aria-label="Ana menü">
+        <a href="index.html" class="active">Ana Sayfa</a>
+        <a href="about.html">Hakkında</a>
+      </nav>
+
+    </div>
+  </header>
+
+
+  <main>
+
+    <!-- ═══════════════════════════════════════════
+         HERO — Site başlığı ve açıklaması
+    ════════════════════════════════════════════ -->
+    <section class="hero" aria-label="Site tanıtımı">
+      <div class="container">
+        <p class="hero-eyebrow">Üniversite Grup Projesi</p>
+        <h1 class="hero-title">Akademi Blog</h1>
+        <p class="hero-description">
+          Araştırma, kültür, teknoloji ve eğitim üzerine özgün yazılar.
+          Merak ettiğiniz konuları keşfedin.
+        </p>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════
+         ÖNE ÇIKAN YAZI — posts.js'de featured:true olan yazı
+    ════════════════════════════════════════════ -->
+    <section class="featured-section" aria-label="Öne çıkan yazı">
+      <div class="container">
+
+        <p class="section-heading" style="margin-bottom:24px">Öne Çıkan</p>
+
+        <!-- main.js bu alana featured yazıyı yerleştirir -->
+        <div id="featuredPost"></div>
+
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════
+         FİLTRELER & ARAMA
+    ════════════════════════════════════════════ -->
+    <section class="filter-section" aria-label="Filtre ve arama">
+      <div class="container">
+
+        <!-- Arama kutusu -->
+        <div class="search-section">
+          <div class="search-wrapper">
+            <span class="search-icon" aria-hidden="true">🔍</span>
+            <input
+              type="search"
+              id="searchInput"
+              class="search-input"
+              placeholder="Yazılarda ara…"
+              aria-label="Blog yazılarında ara"
+            />
+          </div>
+        </div>
+
+        <!-- Kategori filtreleme butonları -->
+        <div style="margin-top: 20px;">
+          <p class="filter-label">Kategoriye Göre Filtrele</p>
+          <!-- main.js bu alana butonları dinamik olarak ekler -->
+          <div id="categoryFilters" class="filter-buttons" role="group" aria-label="Kategori filtreleri"></div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════
+         BLOG YAZILARI IZGARASI
+    ════════════════════════════════════════════ -->
+    <section class="posts-section" aria-label="Blog yazıları">
+      <div class="container">
+
+        <div class="posts-controls" style="margin-bottom: 32px;">
+          <h2 class="section-heading">Tüm Yazılar</h2>
+          <p class="section-sub">En güncel içerikleri aşağıda bulabilirsiniz.</p>
+        </div>
+
+        <!-- main.js bu alana blog kartlarını yerleştirir -->
+        <div id="postsGrid" class="posts-grid"></div>
+
+        <!-- Hiçbir sonuç yoksa bu mesaj gösterilir -->
+        <p id="noResult" class="no-result" role="status">
+          Aramanızla eşleşen yazı bulunamadı. Farklı bir anahtar kelime deneyin.
+        </p>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ═══════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════════ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-inner">
+
+      <div>
+        <p class="footer-brand">Akademi Blog</p>
+        <p class="footer-desc">Üniversite grup projesi — bilgi, kültür ve araştırma üzerine.</p>
+      </div>
+
+      <p class="footer-copy">© 2025 Akademi Blog. Tüm hakları saklıdır.</p>
+
+    </div>
+  </footer>
+
+
+  <!-- ═══════════════════════════════════════════
+       JAVASCRIPT DOSYALARI
+       Önce posts.js (veri), sonra main.js (mantık) yüklenir.
+  ════════════════════════════════════════════ -->
+  <script src="js/posts.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>
